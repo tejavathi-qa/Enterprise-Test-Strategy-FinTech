@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enterprise QA Dashboard | NeoBank STLC</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body class="dark-mode">
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo-container">
+                <div class="logo-icon">QA</div>
+                <h2>NeoBank <span>Shield</span></h2>
+            </div>
+            <nav class="sidebar-nav">
+                <button class="nav-btn active" data-section="overview">
+                    <span class="icon">📊</span> Overview
+                </button>
+                <button class="nav-btn" data-section="rtm">
+                    <span class="icon">📋</span> RTM Matrix
+                </button>
+                <button class="nav-btn" data-section="rbt">
+                    <span class="icon">⚖️</span> Risk Matrix
+                </button>
+                <button class="nav-btn" data-section="defects">
+                    <span class="icon">🐛</span> Defect Log
+                </button>
+                <button class="nav-btn" data-section="tsr">
+                    <span class="icon">🏁</span> Final TSR
+                </button>
+            </nav>
+            <div class="sidebar-footer">
+                <p>Status: <span class="badge success">Ready for Prod</span></p>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="top-header">
+                <div class="header-left">
+                    <h1 id="page-title">QA Strategy Dashboard</h1>
+                    <p class="subtitle">Enterprise Test Strategy for FinTech v1.0</p>
+                </div>
+                <div class="header-right">
+                    <div class="stat-card mini">
+                        <span class="label">Pass Rate</span>
+                        <span class="value">92.8%</span>
+                    </div>
+                </div>
+            </header>
+
+            <section id="content-area">
+                <!-- Overview Section (Default) -->
+                <div id="overview" class="section visible">
+                    <div class="hero-card">
+                        <div class="hero-text">
+                            <h3>High-Stakes Quality Engineering</h3>
+                            <p>Simulation of a complex project lifecycle for Banking & Healthcare. Failure is not an option when dealing with PII and real-time transactions.</p>
+                            <div class="hero-stats">
+                                <div class="h-stat"><strong>50+</strong> <span>Requirements</span></div>
+                                <div class="h-stat"><strong>250</strong> <span>Test Cases</span></div>
+                                <div class="h-stat"><strong>100%</strong> <span>Traceability</span></div>
+                            </div>
+                        </div>
+                        <div class="hero-visual">
+                            <canvas id="mainPassChart"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="grid-layout">
+                        <div class="info-card">
+                            <h4>Key Achievements</h4>
+                            <ul>
+                                <li>Implemented <strong>PII Masking</strong> across all test levels.</li>
+                                <li>Zero <strong>Critical</strong> defects remaining.</li>
+                                <li>Validated <strong>Leap Year</strong> boundary interest logic.</li>
+                            </ul>
+                        </div>
+                        <div class="info-card">
+                            <h4>Automation Coverage</h4>
+                            <div class="progress-container">
+                                <div class="prog-item">
+                                    <span>API (RestAssured)</span>
+                                    <div class="prog-bar"><div class="fill" style="width: 95%;"></div></div>
+                                </div>
+                                <div class="prog-item">
+                                    <span>Web UI (Selenium)</span>
+                                    <div class="prog-bar"><div class="fill" style="width: 85%;"></div></div>
+                                </div>
+                                <div class="prog-item">
+                                    <span>Security Scans</span>
+                                    <div class="prog-bar"><div class="fill" style="width: 100%;"></div></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- RTM Section -->
+                <div id="rtm" class="section">
+                    <div class="table-container">
+                        <h3>Requirements Traceability Matrix</h3>
+                        <div class="table-scroll">
+                            <table id="rtm-table">
+                                <thead>
+                                    <tr>
+                                        <th>BR ID</th>
+                                        <th>Module</th>
+                                        <th>Requirement</th>
+                                        <th>Test Cases</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- Populated by JS -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- RBT Section -->
+                <div id="rbt" class="section">
+                    <h3>Risk-Based Testing Matrix</h3>
+                    <div class="rbt-layout">
+                        <div class="rbt-chart-container">
+                            <canvas id="riskGridChart"></canvas>
+                        </div>
+                        <div class="rbt-legend">
+                            <div class="legend-item critical">Critical Priority (16-25)</div>
+                            <div class="legend-item high">High Priority (10-15)</div>
+                            <div class="legend-item medium">Medium Priority (5-9)</div>
+                            <div class="legend-item low">Low Priority (1-4)</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Defects Section -->
+                <div id="defects" class="section">
+                    <h3>Active Defect Log</h3>
+                    <div class="defect-grid" id="defect-list">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+
+                <!-- TSR Section -->
+                <div id="tsr" class="section">
+                    <div class="tsr-report">
+                        <div class="tsr-header">
+                            <h2>Project Sign-off Report</h2>
+                            <p>All quality gates passed for NeoBank Core v1.0</p>
+                        </div>
+                        <div class="tsr-charts">
+                            <div class="chart-box">
+                                <h4>Test Results</h4>
+                                <canvas id="tsrPieChart"></canvas>
+                            </div>
+                            <div class="chart-box">
+                                <h4>Bugs by Severity</h4>
+                                <canvas id="tsrBarChart"></canvas>
+                            </div>
+                        </div>
+                        <div class="sign-off">
+                            <div class="stamp">PASSED QA</div>
+                            <p>Ready for Production Deployment</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
